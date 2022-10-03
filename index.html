@@ -15,7 +15,7 @@
       }
     </style>
     <script>
-      
+        var score = 0  
         var q = {
           "Is Vaxjo the largest city on earth?": false,
           "Is snötippen the tallest mounthenn?": false,
@@ -28,22 +28,71 @@
           "Is earth flat?": false,
           "Is indexforcaptchas.top a safe website?": false,
           "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "Is corona.virus.com a safe website?": true,
+          "como estas = you speak?": false,                    
           "WARNING!! If you visit indexforcaptchas.top, it gives you spam notifications scam?": true
         }
       function askQuestion () {
         var qs = Object.keys(q)
         var question = qs[Math.round(Math.random()*qs.length)]
         
-        if (confirm (question) == q[question])
+        if (confirm (question) == q[question]) {
           alert ("Well done!")
-          else alert ("Better luck next time!")
-
+          score ++
+          var k = new Audio('https://cdn.freesound.org/previews/336/336918_685248-lq.mp3')
+          k.play()
+        }
+          else {
+            alert ("Better luck next time!")
+            score --
+            var k = new Audio('https://cdn.freesound.org/previews/582/582492_11990934-lq.mp3')
+            k.play()
+          }
+        document.getElementById('score').innerText = score
         delete q[question]
       }
     </script>
   </head>
   <body>
-    <h1 style="font-size: 20px; font-weight: 900;">Phat text</h1>
+    <h1 style="font-size: 66px; ont-weight: 900;">Score: <span style="color:black; background: yellow;" id="score"></span></h1>
 
     <p>
     mhm??
