@@ -4,6 +4,7 @@
       function say (e) {
         if (event.key == "Enter") {
           var msg = document.getElementById('message').value
+          document.getElementById('message').value = ''
           var keyword = ''
           if (msg.split(' ').length > 0) keyword = msg
           else keyword = msg.split(' ')[Math.floor(Math.random()*msg.split(' ').length)]
@@ -15,7 +16,7 @@
         var a = [
           '<span style="color: red">%</span>',
           '<h3>%!!!???</h3>',
-          '<div style="transform: rotate(180deg)">%</div>',
+          '<div style="transform: rotate(340deg)">%</div>',
           '<marquee>%</marquee>',
           '%'
         ]
@@ -23,9 +24,17 @@
       }
       
       function cb (val) {
-        var response = val.query.pages
-        var pages = []
+        console.log(val)
+        var response
         var e = document.getElementById('reply')
+
+        try {
+          response = val.query.pages
+        }
+        catch {
+          e.innerHTML = doFunThing('Ingen aaaaning') + '<br>' + e.innerHTML
+        }
+        var pages = []
         for (let n in response) {
           pages.push(n)
         }
@@ -34,7 +43,7 @@
         } else {
           var n = pages[Math.floor(Math.random() * pages.length)]
           console.log(response, n)
-          e.innerHTML = doFunThing(response[n].extract) + '<br>' + e.innerHTML
+          e.innerHTML = doFunThing(response[n].extract) + '<br>Source: <a target="_blank" href="https://en.wikipedia.org/?curid=' + response[n].pageid + '">' + response[n].title + '</a> <hr>' + e.innerHTML
         }
       }
       
