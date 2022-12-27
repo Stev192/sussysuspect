@@ -44,7 +44,8 @@
           var n = pages[Math.floor(Math.random() * pages.length)]
           console.log(response, n)
           e.innerHTML = doFunThing(response[n].extract) + '<br>Source: <a target="_blank" href="https://en.wikipedia.org/?curid=' + response[n].pageid + '">' + response[n].title + '</a> <hr>' + e.innerHTML
-        }
+          if (response[n].thumbnail) e.innerHTML = '<img src="' + response[n].thumbnail.source + '" style="float:left; margin-right: 2em">' + e.innerHTML 
+       }
       }
       
       function searchWiki (searchPhrase) {
