@@ -4,8 +4,10 @@
       function say (e) {
         if (event.key == "Enter") {
           var msg = document.getElementById('message').value
-          var e = document.getElementById('reply')
-          e.innerHTML = doFunThing(msg) + '<br>' + e.innerHTML 
+          var keyword = ''
+          if (msg.split(' ').length > 0) keyword = msg
+          else keyword = msg.split(' ')[Math.floor(Math.random()*msg.split(' ').length)]
+          searchWiki(keyword)
         }
       }
       
@@ -19,6 +21,29 @@
         ]
         return a[Math.floor(Math.random()*a.length)].replace('%', txt)
       }
+      
+      function cb (val) {
+        var response = val.query.pages
+        var pages = []
+        var e = document.getElementById('reply')
+        for (let n in response) {
+          pages.push(n)
+        }
+        if (pages.length < 1) {
+          e.innerHTML = doFunThing('Ingen aaaaning') + '<br>' + e.innerHTML
+        } else {
+          var n = pages[Math.floor(Math.random() * pages.length)]
+          console.log(response, n)
+          e.innerHTML = doFunThing(response[n].extract) + '<br>' + e.innerHTML
+        }
+      }
+      
+      function searchWiki (searchPhrase) {
+        let s = document.createElement("script");
+        s.src = "https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch="+ searchPhrase +"&callback=cb";
+        document.body.appendChild(s);
+      }
+
     </script>
   </head>
   <body>
